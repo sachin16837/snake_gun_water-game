@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Snake • Gun • Water — Game</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>Snake • Gun • Water</h1>
+        <p class="lead">Click a choice. Gun beats Snake; Snake beats Water; Water beats Gun.</p>
+      </div>
+      <div class="score">
+        <div class="pill">You: <span>{{ player_score }}</span></div>
+        <div class="pill">Computer: <span>{{ computer_score }}</span></div>
+        </div>
+      </header>
+
+        <div class="board">
+          <section class="panel">
+            <div class="status">
+              <div class="result" id="resultText">
+                {{ result if result else "Make your move" }}
+    </div>
+              <div class="computer-choose">
+      <div class="comp-item">
+        <div style="font-size:12px;color:var(--muted)">Computer chose</div>
+                  <div class="comp-choice" id="compChoice">
+                    {{ choices[comp_choice] if comp_choice is not none else "—" }}
+                  </div>
+                </div>
+            </div>
+          </div>
+
+        <form method="POST" class="choices">
+          <button class="choice" name="choice" value="1" title="S (Snake)">
+            <span>🐍 Snake</span>
+            <small>beats Water</small>
+          </button>
+          <button class="choice" name="choice" value="0" title="G (Gun)">
+            <span>🔫 Gun</span>
+            <small>beats Snake</small>
+          </button>
+          <button class="choice" name="choice" value="-1" title="W (Water)">
+            <span>💧 Water</span>
+            <small>beats Gun</small>
+          </button>
+        </form>
+
+        <footer class="small">.choose any option </footer>
+      </section>
+
+      <aside class="panel">
+        <h3>Rules & Explanation</h3>
+        <p class="muted">
+          Mapped values: <strong>snake = 1</strong>, <strong>gun = 0</strong>, <strong>water = -1</strong>.
+        </p>
+        <dl class="rules">
+          <div><strong>Gun</strong><div>beats Snake</div></div>
+          <div><strong>Snake</strong><div>beats Water</div></div>
+          <div><strong>Water</strong><div>beats Gun</div></div>
+          <div><strong>Draw</strong><div>same choice</div></div>
+        </dl>
+      </aside>
+    </div>
+  </div>
+</body>
+</html>
